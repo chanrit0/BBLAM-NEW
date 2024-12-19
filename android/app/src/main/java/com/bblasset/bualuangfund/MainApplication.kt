@@ -1,4 +1,4 @@
-package com.bblamone
+package com.bblasset.bualuangfund
 
 import android.app.Application
 import com.facebook.react.PackageList
