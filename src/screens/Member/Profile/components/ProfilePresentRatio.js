@@ -1,0 +1,21 @@
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { GraphDonut, TextRegular } from 'components/atoms';
+import { ViewScale } from 'utils';
+import { FONT_SIZE } from 'styles';
+
+export default function ProfilePresentRatio({ data, total, date }) {
+  return (
+    <View style={styles.container}>
+      <GraphDonut data={data} total={total} date={date}></GraphDonut>
+      <TextRegular size={FONT_SIZE.BODY_3} style={styles.text}>
+        {'ถ้าสัดส่วนเกิน จะนำเงินใหม่ไปลงทุนในนโยบายตามที่บริษัทกำหนด'}
+      </TextRegular>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { backgroundColor: '#FFF', flex: 1, justifyContent: 'center' },
+  text: { alignSelf: 'center', marginVertical: ViewScale(10) },
+});
