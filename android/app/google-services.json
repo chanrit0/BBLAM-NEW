@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "844370364334",
+    "project_id": "pvd-connext",
+    "storage_bucket": "pvd-connext.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844370364334:android:09a7c98f66a4549b9c6a3f",
+        "android_client_info": {
+          "package_name": "com.bblasset.bblamone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844370364334-bp7g45gghi8njniske50fttkgnr389pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMsXsisUu3j_Vn0KeiJ5qP9dlMMOgGE_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844370364334-bp7g45gghi8njniske50fttkgnr389pq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844370364334-494h8pkesg7sll2hkv6kauija8vacg5k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bblasset.bualuangfund"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844370364334:android:aef6d9d79f53549f9c6a3f",
+        "android_client_info": {
+          "package_name": "com.bblasset.bualuangfund"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844370364334-bp7g45gghi8njniske50fttkgnr389pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMsXsisUu3j_Vn0KeiJ5qP9dlMMOgGE_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844370364334-bp7g45gghi8njniske50fttkgnr389pq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844370364334-494h8pkesg7sll2hkv6kauija8vacg5k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bblasset.bualuangfund"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
