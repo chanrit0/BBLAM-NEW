@@ -17,10 +17,16 @@ end
 target 'BBLAMONE' do
   config = use_native_modules!
 
+  pod 'GoogleUtilities', :modular_headers => true;
+  pod 'FirebaseCore', :modular_headers => true;
+  
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    :hermes_enabled => false
   )
 
   target 'BBLAMONETests' do
