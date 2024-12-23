@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   RefreshControl,
   Image,
+  Linking,
 } from 'react-native';
 
 // custom
@@ -233,7 +234,14 @@ export default function index({navigation}) {
                 {apiData.banners.length > 0 ? (
                   <Banner>
                     {apiData.banners.map(item => (
-                      <View key={item} style={styles.bannerContent}>
+                      <TouchableOpacity
+                        onPress={() => {
+                          if (item?.link != undefined) {
+                            Linking.canOpenURL(item?.link);
+                          }
+                        }}
+                        key={item}
+                        style={styles.bannerContent}>
                         <FastImage
                           style={{height: '100%'}}
                           resizeMode={FastImage.resizeMode.cover}
@@ -242,7 +250,7 @@ export default function index({navigation}) {
                             priority: FastImage.priority.high,
                           }}
                         />
-                      </View>
+                      </TouchableOpacity>
                     ))}
                   </Banner>
                 ) : (

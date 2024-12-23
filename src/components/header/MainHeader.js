@@ -31,7 +31,7 @@ const MainHeader = ({
               marginLeft: 0,
               paddingLeft: 0,
             }}
-            color={COLORS.PRIMARY}
+            iconColor={COLORS.PRIMARY}
             size={ViewScale(30)}
             onPress={() => {
               if (callbackFunction !== null) {
@@ -56,7 +56,7 @@ const MainHeader = ({
               marginLeft: 0,
               paddingLeft: 0,
             }}
-            color={COLORS.PRIMARY}
+            iconColor={COLORS.PRIMARY}
             size={ViewScale(30)}
             onPress={() => {
               if (callbackFunction !== null) {
