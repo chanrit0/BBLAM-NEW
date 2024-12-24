@@ -16,7 +16,7 @@ export default function Banner({children}) {
   return (
     <View
       style={{
-        height: height * (isTablet ? 0.3 : 0.21),
+        height: height * (isTablet ? 0.3 : 0.215),
         marginBottom: ViewScale(30),
         width: '100%',
       }}>
