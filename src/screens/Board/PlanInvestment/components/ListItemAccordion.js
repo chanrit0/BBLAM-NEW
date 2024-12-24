@@ -9,20 +9,20 @@ import {
 } from 'react-native';
 
 // custom
-import {Translate} from 'function';
-import {ViewScale, FontScale, isTablet} from 'utils';
+import { Translate } from 'function';
+import { ViewScale, FontScale, isTablet } from 'utils';
 // components
-import {Container} from 'components/common';
+import { Container } from 'components/common';
 import {
   TextPoints,
   LineHorizontal,
   TextMedium,
   TextRegular,
 } from 'components/atoms';
-import {Ionicons, Entypo} from 'components/Icons';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {ListItem} from 'react-native-elements';
-import {COLORS, FONT_SIZE, FONT_TYPE, SPACING} from 'styles';
+import { Ionicons, Entypo } from 'components/Icons';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { ListItem } from 'react-native-elements';
+import { COLORS, FONT_SIZE, FONT_TYPE, SPACING } from 'styles';
 // lib
 
 export const ListItemAccordion = ({
@@ -52,8 +52,8 @@ export const ListItemAccordion = ({
     <View style={styles.rootContainer}>
       <ListItem.Accordion
         content={
-          <View style={{flexDirection: 'row'}}>
-            <Container style={{marginRight: 0}}>
+          <View style={{ flexDirection: 'row' }}>
+            <Container style={{ marginRight: 0 }}>
               <View style={styles.container}>
                 <View style={styles.contentContainer}>
                   <TextMedium size={FONT_SIZE.BODY_3} numberOfLines={1}>
@@ -93,7 +93,7 @@ export const ListItemAccordion = ({
                   </TextRegular>
                   <TextPoints
                     pointSizeSame
-                    number={parseFloat(total)}
+                    number={total === '' ? 0 : parseFloat(total)}
                     suffix={` ${Translate('textBaht')}`}
                     style={{
                       color: COLORS.PRIMARY,
@@ -114,7 +114,7 @@ export const ListItemAccordion = ({
               }}>
               <ChevronView
                 style={{
-                  transform: [{rotate: ChevronAnimated}],
+                  transform: [{ rotate: ChevronAnimated }],
                 }}>
                 <Ionicons name={'chevron-down-sharp'} size={ViewScale(20)} />
               </ChevronView>
@@ -122,14 +122,14 @@ export const ListItemAccordion = ({
           </View>
         }
         noIcon
-        rightIconContainerStyle={{marginTop: 200}}
+        rightIconContainerStyle={{ marginTop: 200 }}
         containerStyle={styles.ListDefaultContainer}
         isExpanded={expanded}
         onPress={() => {
           setExpanded(!expanded);
         }}>
         {expanded && (
-          <Container style={{flex: 0, marginBottom: ViewScale(15)}}>
+          <Container style={{ flex: 0, marginBottom: ViewScale(15) }}>
             <View
               style={{
                 justifyContent: 'space-between',
@@ -155,7 +155,7 @@ export const ListItemAccordion = ({
                             size={FontScale(12)}
                             pointSizeSame
                             suffix={'%'}
-                            style={{fontFamily: FONT_TYPE.MEDIUM}}
+                            style={{ fontFamily: FONT_TYPE.MEDIUM }}
                           />
                         </View>
                         <LineHorizontal />

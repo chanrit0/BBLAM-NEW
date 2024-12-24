@@ -14,14 +14,14 @@ import {
 
 // custom
 import styles from './Style';
-import {Translate} from 'function';
-import {ViewScale} from 'utils';
-import {COLORS} from 'styles';
+import { Translate } from 'function';
+import { ViewScale } from 'utils';
+import { COLORS } from 'styles';
 
 // global components
-import {Container} from 'components/common';
-import {SafeAreaView, Avatar, TextBold} from 'components/atoms';
-import {MaterialIcons} from 'components/Icons';
+import { Container } from 'components/common';
+import { SafeAreaView, Avatar, TextBold } from 'components/atoms';
+import { MaterialIcons } from 'components/Icons';
 
 // local components
 import Banner from './components/Banner';
@@ -37,16 +37,16 @@ import FastImage from 'react-native-fast-image';
 // import OTPublishersNativeSDK from 'react-native-onetrust-cmp';
 
 // recoil
-import {useRecoilValue} from 'recoil';
-import {languageState, userDeviceStatusState} from 'recoil-state';
-import {getBanners, getCategoriesNews, getNews} from 'services/api/bblamone';
+import { useRecoilValue } from 'recoil';
+import { languageState, userDeviceStatusState } from 'recoil-state';
+import { getBanners, getCategoriesNews, getNews } from 'services/api/bblamone';
 import dayjs from 'dayjs';
-import {AlertNotAvaliable} from 'components/molecules';
+import { AlertNotAvaliable } from 'components/molecules';
 
-export default function index({navigation}) {
+export default function index({ navigation }) {
   useRecoilValue(languageState);
   dayjs.locale('th');
-  const {isSignIn} = useRecoilValue(userDeviceStatusState);
+  const { isSignIn } = useRecoilValue(userDeviceStatusState);
   const [apiData, setApiData] = React.useState({
     category: [],
     news: [],
@@ -56,11 +56,11 @@ export default function index({navigation}) {
   const firstRender = React.useRef(true);
 
   const goToListNews = category_name => () => {
-    return navigation.navigate('ListNews', {category_name});
+    return navigation.navigate('ListNews', { category_name });
   };
 
   const goToReadnews = url => () => {
-    return navigation.navigate('ReadNews', {url});
+    return navigation.navigate('ReadNews', { url });
   };
 
   const shuffle = array => {
@@ -126,7 +126,7 @@ export default function index({navigation}) {
 
   const onRefresh = () => {
     callapi().then(data =>
-      setApiData({category: data[0], news: data[1], banners: data[2]}),
+      setApiData({ category: data[0], news: data[1], banners: data[2] }),
     );
   };
 
@@ -174,7 +174,7 @@ export default function index({navigation}) {
       />
       <SafeAreaView noBottom>
         <AppScrollViewIOSBounceColorsWrapper
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           bottomBounceColor={COLORS.GRAY_1}>
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -190,15 +190,15 @@ export default function index({navigation}) {
                       isSignIn
                         ? navigation.openDrawer()
                         : navigation.navigate('Alert1', {
-                            title: `${Translate('textLogIn')} / ${Translate(
-                              'textRegister',
-                            )}`,
-                            onPress: () => {
-                              navigation.navigate('PVDStack');
-                            },
-                            children: <AlertLogin />,
-                            TouchableBackdrop: true,
-                          });
+                          title: `${Translate('textLogIn')} / ${Translate(
+                            'textRegister',
+                          )}`,
+                          onPress: () => {
+                            navigation.navigate('PVDStack');
+                          },
+                          children: <AlertLogin />,
+                          TouchableBackdrop: true,
+                        });
                     }}>
                     <View style={styles.headerLeft}>
                       <Avatar />
@@ -207,7 +207,7 @@ export default function index({navigation}) {
                       </TextBold>
                     </View>
                   </TouchableOpacity>
-                  <View style={{flexDirection: 'row'}}>
+                  <View style={{ flexDirection: 'row' }}>
                     {/* <TouchableOpacity onPress={showPreferenceCenter}>
                       <Image
                         resizeMode={'contain'}
@@ -219,7 +219,7 @@ export default function index({navigation}) {
                         source={require('assets/icons/technology-privacy-consent-profile-list-approve.png')}
                       />
                     </TouchableOpacity> */}
-                    <View style={{width: ViewScale(10)}} />
+                    <View style={{ width: ViewScale(10) }} />
                     <TouchableOpacity onPress={handleOnPressNotification}>
                       <MaterialIcons
                         name="notifications-none"
@@ -235,15 +235,16 @@ export default function index({navigation}) {
                   <Banner>
                     {apiData.banners.map(item => (
                       <TouchableOpacity
+                        disabled={item?.link == undefined ? true : false}
                         onPress={() => {
                           if (item?.link != undefined) {
-                            Linking.canOpenURL(item?.link);
+                            Linking.openURL(item?.link);
                           }
                         }}
                         key={item}
                         style={styles.bannerContent}>
                         <FastImage
-                          style={{height: '100%'}}
+                          style={{ height: '100%' }}
                           resizeMode={FastImage.resizeMode.cover}
                           source={{
                             uri: item.url,
@@ -254,7 +255,7 @@ export default function index({navigation}) {
                     ))}
                   </Banner>
                 ) : (
-                  <View style={{height: ViewScale(180)}} />
+                  <View style={{ height: ViewScale(180) }} />
                 )}
               </Container>
             </View>
@@ -265,7 +266,7 @@ export default function index({navigation}) {
               <View style={styles.body}>
                 <View>
                   <Container>
-                    <View style={{marginBottom: ViewScale(20)}}>
+                    <View style={{ marginBottom: ViewScale(20) }}>
                       {apiData.category.length > 0 ? (
                         <View
                           style={{

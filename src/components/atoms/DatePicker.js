@@ -34,7 +34,7 @@ export default ({
   // ตรวจสอบ minimumDate (ถ้าไม่ระบุให้ใช้วันนี้)
   const minDate = minimumDate ?
     new Date(
-      minimumDate.getFullYear() + (Platform.OS === 'android' ? 543 : 0),
+      minimumDate.getFullYear() + (Platform.OS === 'android' ? 543 : 543),
       minimumDate.getMonth(),
       minimumDate.getDate()
     ) :
@@ -75,6 +75,7 @@ export default ({
         }
         locale="th-TH"
         mode="date"
+        theme='light'
         onConfirm={handleConfirm}
         onCancel={toggleDatePicker}
         minimumDate={minDate}

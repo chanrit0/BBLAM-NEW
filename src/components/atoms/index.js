@@ -29,9 +29,11 @@ import TextLight from './Text/TextLight';
 import TextMedium from './Text/TextMedium';
 import TabView from './TabBar/TabView';
 import TabBar from './TabBar/TabBar';
+import TabViewCustom from './TabBar/TabViewCustom'
 
 export {
   TabView,
+  TabViewCustom,
   TabBar,
   TextRegular,
   TextBold,

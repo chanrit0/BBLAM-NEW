@@ -86,7 +86,7 @@ export default function SettingPage() {
         }
         onPress={_ChangePasscode}
       />
-      <List
+      {/* <List
         title={Translate('textChangeLanguage')}
         icon={
           <Globe
@@ -110,7 +110,7 @@ export default function SettingPage() {
           </View>
         }
         onPress={_ChangeLanguage}
-      />
+      /> */}
     </View>
   );
 }

@@ -15,7 +15,7 @@ export default function Circle({children, style, callback}) {
   );
 }
 
-const SIZE = 90;
+const SIZE = 80;
 
 const styles = StyleSheet.create({
   circle: {

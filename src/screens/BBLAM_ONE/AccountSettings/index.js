@@ -143,7 +143,7 @@ export default ({navigation}) => {
         onPress={navigatePasscode}
         styleContentRight={styles.passwordUnderline}
       />
-      <List
+      {/* <List
         title={Translate('textChangeLanguage')}
         icon={
           <Globe
@@ -167,7 +167,7 @@ export default ({navigation}) => {
           </View>
         }
         onPress={_ChangeLanguage}
-      />
+      /> */}
       <View style={styles.paddingDelete25}>
         <TouchableOpacity onPress={() => navigateDeleteAcc()}>
           <TextMedium style={styles.logout}>

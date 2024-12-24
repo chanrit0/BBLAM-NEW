@@ -1,19 +1,14 @@
 // React
 import React from 'react';
-import { useWindowDimensions } from 'react-native';
 
 // custom
 import HalfYear from './HalfYear';
 import Monthly from './Monthly';
 
 // components
-import { TabBar } from 'components/atoms';
-
-//lib 
-import { TabView } from 'react-native-tab-view';
+import { TabViewCustom } from 'components/atoms';
 
 export default function Tab({ data }) {
-  const layout = useWindowDimensions();
   // useState
   const [routes] = React.useState([
     { key: 'first', title: 'รายเดือน' },
@@ -48,13 +43,10 @@ export default function Tab({ data }) {
   };
 
   return (
-    <TabView
-      renderTabBar={props => <TabBar {...props} />}
-      navigationState={{ index, routes }}
+    <TabViewCustom
+      routes={routes}
       renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
-      style={{ height: height }}
+      heightG={height}
     />
   );
 }

@@ -7,14 +7,11 @@ import { setSpinner } from 'utils';
 
 // components
 import { RootScroll } from 'components/common';
-import { TabView, TabBar, ActivityIndicator } from 'components/atoms';
+import { ActivityIndicator } from 'components/atoms';
 import { InvestmentOverview, MyReturn, NameProfile, ProfileRatio } from 'components/organisms';
-import ProfilePresentRatio from './components/ProfilePresentRatio';
-import ProfileNewRatio from './components/ProfileNewRatio';
 import { AlertSuccess } from 'components/molecules';
 
 // lib
-import { SceneMap } from 'react-native-tab-view';
 import { useRecoilValue } from 'recoil';
 import { languageState, userInfoState } from 'recoil-state';
 import _ from 'lodash';

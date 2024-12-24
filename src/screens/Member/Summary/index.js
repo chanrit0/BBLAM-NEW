@@ -12,7 +12,7 @@ import {SceneMap} from 'react-native-tab-view';
 import OldYear from './components/OldYear';
 import CurrentYear from './components/CurrentYear';
 import {RootScroll} from 'components/common';
-import {ActivityIndicator, TabBar, TabView} from 'components/atoms';
+import {ActivityIndicator, TabViewCustom} from 'components/atoms';
 
 // services
 import {getContribution} from 'services/api/member';
@@ -86,11 +86,10 @@ export default () => {
       title={Translate('textSummaryTitle')}
       flexContainer>
       {isLoad ? (
-        <TabView
+        <TabViewCustom
           routes={routes}
           defaultIndex={1}
           renderScene={renderScene}
-          renderTabBar={TabBar}
         />
       ) : (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
