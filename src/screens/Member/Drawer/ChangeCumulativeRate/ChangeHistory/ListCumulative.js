@@ -22,7 +22,7 @@ export function ListCumulative({
         borderColor: COLORS.BORDER,
         paddingVertical: ViewScale(15),
       }}>
-      <Container style={{alignItems: 'flex-end'}}>
+      <View style={{alignItems: 'flex-end'}}>
         {type === 'complete' && (
           <TextRegular
             color={
@@ -35,8 +35,8 @@ export function ListCumulative({
             {deposit_rate_status}
           </TextRegular>
         )}
-      </Container>
-      <Container
+      </View>
+      <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -59,7 +59,7 @@ export function ListCumulative({
             <TextLight size={FONT_SIZE.BODY_2}>{created_at_th}</TextLight>
           </TextRegular>
         </View>
-      </Container>
+      </View>
       {type === 'pending' && (
         <Container style={{alignItems: 'flex-start'}}>
           <TouchableOpacity

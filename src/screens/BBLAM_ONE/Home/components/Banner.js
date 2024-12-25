@@ -1,26 +1,26 @@
 // React
 import React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import { View, Dimensions } from 'react-native';
 
 // custom
-import {isTablet, ViewScale} from 'utils';
+import { isTablet, ViewScale } from 'utils';
 
 //components
 
 // lib
 import Swiper from 'react-native-swiper';
 
-export default function Banner({children}) {
+export default function Banner({ children }) {
   const height = Dimensions.get('window').height;
 
   return (
     <View
       style={{
-        height: height * (isTablet ? 0.3 : 0.21),
+        height: height * (isTablet ? 0.3 : 0.215),
         marginBottom: ViewScale(30),
         width: '100%',
       }}>
-      <Swiper loop autoplay {...swiperStyle}>
+      <Swiper loop autoplay removeClippedSubviews={false}  {...swiperStyle}>
         {children}
       </Swiper>
     </View>
@@ -29,7 +29,7 @@ export default function Banner({children}) {
 
 const DOT_SIZE = 7;
 const swiperStyle = {
-  autoplayTimeout: 4,
+  autoplayTimeout: 5,
   paginationStyle: {
     bottom: -ViewScale(DOT_SIZE * 3),
   },

@@ -1,26 +1,23 @@
 import React from 'react';
-import {useWindowDimensions} from 'react-native';
-import {Translate} from 'function';
-import {RootScroll} from 'components/common';
-import {TabBar} from 'components/atoms';
-import {TabView} from 'react-native-tab-view';
+import { useWindowDimensions } from 'react-native';
+import { Translate } from 'function';
+import { RootScroll } from 'components/common';
+import { TabViewCustom } from 'components/atoms';
 
 import Pending from './Pending';
 import Complete from './Complete';
 import Cancel from './Cancel';
 
 export default function TransactionInfo() {
-  const layout = useWindowDimensions();
-  const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    {key: 'first', title: Translate('textPendingTransaction')},
-    {key: 'second', title: Translate('textCompleteTransaction')},
-    {key: 'third', title: Translate('textCancelTransaction')},
+    { key: 'first', title: Translate('textPendingTransaction') },
+    { key: 'second', title: Translate('textCompleteTransaction') },
+    { key: 'third', title: Translate('textCancelTransaction') },
   ]);
   const callCancelApi = React.useRef(null);
   const isMounted = React.useRef(true);
 
-  const renderScene = ({route}) => {
+  const renderScene = ({ route }) => {
     switch (route.key) {
       case 'first':
         return <Pending callback={callCancelApi} isMounted={isMounted} />;
@@ -44,12 +41,9 @@ export default function TransactionInfo() {
       title={Translate('textTransactionInfoTitle')}
       isBackIcon={true}
       flexContainer={true}>
-      <TabView
-        navigationState={{index, routes}}
+      <TabViewCustom
+        routes={routes}
         renderScene={renderScene}
-        renderTabBar={TabBar}
-        onIndexChange={setIndex}
-        initialLayout={{width: layout.width}}
       />
     </RootScroll>
   );

@@ -1,35 +1,49 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
-import {TabBar} from 'react-native-tab-view';
-import {ViewScale, FontScale} from 'utils';
-import {COLORS, FONT_TYPE} from 'styles';
-export default props => {
-  const [width, setWidth] = React.useState(0);
-  const screenWitdh = Dimensions.get('window').width;
+import { View, Text, StyleSheet } from 'react-native';
+import { TabBar } from 'react-native-tab-view';
+import { COLORS, FONT_TYPE} from 'styles';
+import { ViewScale, FontScale } from 'utils';
 
-  const row = {justifyContent: 'center', flexDirection: 'row'};
+export default props => {
+  const { navigationState } = props;
+  const [width, setWidth] = React.useState(0);
+
+  const row = { justifyContent: 'center', flexDirection: 'row' };
 
   return (
     <View
-      onLayout={({nativeEvent}) => {
+      onLayout={({ nativeEvent }) => {
         setWidth(nativeEvent.layout.width);
       }}
       style={row}>
       <TabBar
         {...props}
-        labelStyle={{
-          fontSize: FontScale(18),
-          fontFamily: FONT_TYPE.SEMI_BOLD,
+        renderTabBarItem={({ route, onPress, onLongPress }) => {
+          const isFocused = navigationState.index === navigationState.routes.findIndex(r => r.key === route.key);
+
+          return (
+            <View style={styles.tabContainer}>
+              <Text
+                onPress={onPress}
+                onLongPress={onLongPress}
+                style={[
+                  styles.tabLabel,
+                  {
+                    color: isFocused ? COLORS.PRIMARY : COLORS.GRAY_3,
+                    fontSize: FontScale(18),
+                    fontFamily: FONT_TYPE.SEMI_BOLD,
+                  },
+                ]}
+              >
+                {route.title}
+              </Text>
+              {isFocused && <View style={styles.indicator} />}
+            </View>
+          );
         }}
-        activeColor={COLORS.PRIMARY}
-        inactiveColor={COLORS.GRAY_3}
         tabStyle={{
           width: 'auto',
           elevation: 0,
-        }}
-        indicatorStyle={{
-          backgroundColor: COLORS.PRIMARY,
-          bottom: ViewScale(10),
         }}
         contentContainerStyle={{
           flex: 0,
@@ -42,3 +56,21 @@ export default props => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  tabContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  tabLabel: {
+    fontSize: 18,
+  },
+  indicator: {
+    width: '100%',
+    height: 3,
+    backgroundColor: COLORS.PRIMARY,
+    marginTop: 4,
+  },
+});

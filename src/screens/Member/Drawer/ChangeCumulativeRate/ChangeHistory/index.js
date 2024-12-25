@@ -63,6 +63,7 @@ export default ({route}) => {
           renderTabBar={TabBar}
           onIndexChange={setIndex}
           initialLayout={{width: layout.width}}
+          style={{height: 250}}
         />
       )}
     </RootScroll>

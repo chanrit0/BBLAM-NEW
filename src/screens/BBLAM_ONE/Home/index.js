@@ -233,7 +233,7 @@ export default function index({ navigation }) {
                 {/* banner */}
                 {apiData.banners.length > 0 ? (
                   <Banner>
-                    {apiData.banners.map(item => (
+                    {apiData.banners.map((item, index) => (
                       <TouchableOpacity
                         disabled={item?.link == undefined ? true : false}
                         onPress={() => {
@@ -241,11 +241,11 @@ export default function index({ navigation }) {
                             Linking.openURL(item?.link);
                           }
                         }}
-                        key={item}
+                        key={index}
                         style={styles.bannerContent}>
-                        <FastImage
+                        <Image
                           style={{ height: '100%' }}
-                          resizeMode={FastImage.resizeMode.cover}
+                          resizeMode="cover"
                           source={{
                             uri: item.url,
                             priority: FastImage.priority.high,

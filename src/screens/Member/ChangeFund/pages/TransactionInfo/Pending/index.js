@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, InteractionManager} from 'react-native';
+import { View, Text, InteractionManager } from 'react-native';
 import ListTrans from '../ListTrans';
-import {useNavigation} from '@react-navigation/core';
-import {Translate} from 'function';
-import {setSpinner, ViewScale} from 'utils';
-import {Container} from 'components/common';
-import {TextRegular} from 'components/atoms';
-import {COLORS, FONT_SIZE} from 'styles';
+import { useNavigation } from '@react-navigation/core';
+import { Translate } from 'function';
+import { setSpinner, ViewScale } from 'utils';
+import { Container } from 'components/common';
+import { TextRegular } from 'components/atoms';
+import { COLORS, FONT_SIZE } from 'styles';
 import {
   getTransactionCount,
   getTransactionPending,
@@ -14,7 +14,7 @@ import {
 } from 'services/api/member';
 import ServerErrorPage from 'screens/Global/ServerErrorPage';
 
-export default function index({callback, isMounted}) {
+export default function index({ callback, isMounted }) {
   const navigation = useNavigation();
   const [apiData, setApiData] = React.useState([]);
   const [transaction_count, setTransaction_count] = React.useState(null);
@@ -83,7 +83,10 @@ export default function index({callback, isMounted}) {
       InteractionManager.runAfterInteractions(() => {
         setSpinner(true);
         cancelapi(idManage.current)
-          .then(() => callapi())
+          .then(() => {
+            setApiData([]);
+            callapi();
+          })
           .then(() => callback.current())
           .finally(() => {
             setPasswordMatch(false);
@@ -94,12 +97,12 @@ export default function index({callback, isMounted}) {
   }, [passwordMatch]);
 
   const onPress = id => () => {
-    navigation.navigate('TransactionInfoDetail', {id});
+    navigation.navigate('TransactionInfoDetail', { id });
   };
 
   const onCancel = id => () => {
     idManage.current = id;
-    navigation.navigate('CheckPassword', {setPasswordMatch});
+    navigation.navigate('CheckPassword', { setPasswordMatch });
   };
 
   const handleOnRefreshServerError = () => {
@@ -115,7 +118,7 @@ export default function index({callback, isMounted}) {
   };
 
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
+    <View style={{ backgroundColor: 'white', flex: 1 }}>
       {isServerError ? (
         <ServerErrorPage onPress={handleOnRefreshServerError} />
       ) : (
@@ -126,10 +129,10 @@ export default function index({callback, isMounted}) {
                 backgroundColor: '#f6f7fa',
                 paddingVertical: ViewScale(10),
               }}>
-              <Container style={{alignItems: 'center'}}>
+              <Container style={{ alignItems: 'center' }}>
                 <TextRegular
                   size={FONT_SIZE.BODY_2}
-                  style={{textAlign: 'center'}}>
+                  style={{ textAlign: 'center' }}>
                   {Translate('textTransactionCompleteHeader')}
                   <TextRegular size={FONT_SIZE.BODY_2}>
                     {' '}

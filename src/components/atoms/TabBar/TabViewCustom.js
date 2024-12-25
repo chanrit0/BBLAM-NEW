@@ -9,7 +9,7 @@ import {
 import { TabView } from 'react-native-tab-view';
 import { COLORS, FONT_SIZE, FONT_TYPE } from 'styles';
 
-export default ({ defaultIndex = 0, routes, renderScene, heightG }) => {
+export default ({ defaultIndex = 0, routes, renderScene, heightG, ...props }) => {
   const layout = useWindowDimensions();
 
   // ตั้งค่าเริ่มต้นให้ index
@@ -87,6 +87,7 @@ export default ({ defaultIndex = 0, routes, renderScene, heightG }) => {
       }}
       initialLayout={{ width: layout.width }}
       style={{ height: heightG }}
+      {...props}
     />
   );
 };
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: COLORS.WHITE,
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
   },
   tabItem: {
     flex: 1,

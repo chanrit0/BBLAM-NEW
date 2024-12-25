@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {FontScale, ViewScale} from 'utils';
-import {SPACING, COLORS} from 'styles';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { StyleSheet } from 'react-native';
+import { FontScale, ViewScale } from 'utils';
+import { SPACING, COLORS } from 'styles';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default styles = StyleSheet.create({
   header: {
