@@ -4,7 +4,7 @@ import {TouchableOpacity, View} from 'react-native';
 import {TextRegular, TextMedium, TextLight} from 'components/atoms';
 import {setSpinner, ViewScale} from 'utils';
 import {Container} from 'components/common';
-import {COLORS, FONT_SIZE} from 'styles';
+import {COLORS, FONT_SIZE, SPACING} from 'styles';
 
 export function ListCumulative({
   created_at_th = '',
@@ -22,7 +22,11 @@ export function ListCumulative({
         borderColor: COLORS.BORDER,
         paddingVertical: ViewScale(15),
       }}>
-      <View style={{alignItems: 'flex-end'}}>
+      <View
+        style={{
+          alignItems: 'flex-end',
+          paddingHorizontal: SPACING.CONTAINER_MARGIN_HORIZONTAL,
+        }}>
         {type === 'complete' && (
           <TextRegular
             color={
@@ -42,6 +46,7 @@ export function ListCumulative({
           justifyContent: 'space-between',
           alignItems: 'center',
           paddingBottom: ViewScale(10),
+          paddingHorizontal: SPACING.CONTAINER_MARGIN_HORIZONTAL,
         }}>
         <View>
           <TextRegular>{'อัตราสะสมใหม่'}</TextRegular>
@@ -61,7 +66,11 @@ export function ListCumulative({
         </View>
       </View>
       {type === 'pending' && (
-        <Container style={{alignItems: 'flex-start'}}>
+        <View
+          style={{
+            alignItems: 'flex-start',
+            paddingHorizontal: SPACING.CONTAINER_MARGIN_HORIZONTAL,
+          }}>
           <TouchableOpacity
             onPress={handleCancel}
             style={{
@@ -75,7 +84,7 @@ export function ListCumulative({
               ยกเลิกรายการ
             </TextMedium>
           </TouchableOpacity>
-        </Container>
+        </View>
       )}
     </View>
   );

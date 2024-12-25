@@ -3,12 +3,11 @@
 import React from 'react';
 import {useWindowDimensions} from 'react-native';
 import {RootScroll} from 'components/common';
-import {TabBar} from 'components/atoms';
+import {TabViewCustom} from 'components/atoms';
 
 import Pending from './Pending';
 import Complete from './Complete';
 
-import {TabView} from 'react-native-tab-view';
 import {getDepositHistory} from 'services/api/member';
 import {setSpinner} from 'utils';
 
@@ -57,14 +56,7 @@ export default ({route}) => {
       flexContainer
       fixTab={false}>
       {apiData !== null && (
-        <TabView
-          navigationState={{index, routes}}
-          renderScene={renderScene}
-          renderTabBar={TabBar}
-          onIndexChange={setIndex}
-          initialLayout={{width: layout.width}}
-          style={{height: 250}}
-        />
+        <TabViewCustom routes={routes} renderScene={renderScene} />
       )}
     </RootScroll>
   );
