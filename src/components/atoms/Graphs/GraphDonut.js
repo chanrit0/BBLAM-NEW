@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Dimensions, TouchableOpacity, View } from 'react-native';
-import { VictoryPie, VictoryLabel, VictoryLegend } from 'victory-native';
-import Svg, { G, Polyline, Text, TSpan, Image } from 'react-native-svg';
-import { numberWithCommas, ViewScale } from 'utils';
-import { isTablet, COLORS, FONT_TYPE, FONT_SIZE, globalStyle } from 'styles';
-import { getXOffset, getYOffset, getAverage } from 'utils/math';
-import { TextMedium } from 'components/atoms';
+import {Dimensions, TouchableOpacity, View} from 'react-native';
+import {VictoryPie, VictoryLabel, VictoryLegend} from 'victory-native';
+import Svg, {G, Polyline, Text, TSpan, Image} from 'react-native-svg';
+import {numberWithCommas, ViewScale} from 'utils';
+import {isTablet, COLORS, FONT_TYPE, FONT_SIZE, globalStyle} from 'styles';
+import {getXOffset, getYOffset, getAverage} from 'utils/math';
+import {TextMedium} from 'components/atoms';
 import _ from 'lodash';
 
 const color2 = ['#259999', '#1b3687'];
@@ -77,15 +77,15 @@ export default ({
     );
   else
     return (
-      <View style={{ backgroundColor: 'transparent' }}>
+      <View style={{backgroundColor: 'transparent'}}>
         <Svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
           {indexColor == 1 && (
             <VictoryPie
               radius={radius}
               colorScale={data.length > 2 ? color4 : color2}
               innerRadius={innerRadius}
-              animate={{ duration: 300 }}
-              origin={{ x: centerX, y: centerY }}
+              animate={{duration: 300}}
+              origin={{x: centerX, y: centerY}}
               data={data}
               x={'x'}
               y={'y'}
@@ -139,19 +139,21 @@ export default ({
                   fontFamily: FONT_TYPE.MEDIUM,
                   fill: COLORS.PRIMARY,
                 },
-                { fontSize: ViewScale(10), fontFamily: FONT_TYPE.MEDIUM },
+                {fontSize: ViewScale(10), fontFamily: FONT_TYPE.MEDIUM},
               ]}
               x={width / 2}
               y={height / 2}
               text={[
-                total === '' ? '0' : numberWithCommas(parseFloat(total)?.toFixed(2)),
+                total === ''
+                  ? '0'
+                  : numberWithCommas(parseFloat(total)?.toFixed(2)),
                 `ณ วันที่ ${date}`,
               ]}
             />
           )}
         </Svg>
         {result == 0 && (
-          <View width={width} style={{ alignItems: 'center' }}>
+          <View width={width} style={{alignItems: 'center'}}>
             <View
               style={{
                 width: width,
@@ -167,7 +169,7 @@ export default ({
                 }}>
                 {`หมายเหตุ: `}
               </TextMedium>
-              <View style={{ width: width / 1.5 }}>
+              <View style={{width: width / 1.5}}>
                 <TextMedium
                   numberOfLines={2}
                   style={{
@@ -179,7 +181,7 @@ export default ({
                 </TextMedium>
               </View>
             </View>
-            <View style={{ height: 10 }} />
+            <View style={{height: 10}} />
             <View
               style={{
                 width: width / 1.2,
@@ -189,7 +191,8 @@ export default ({
               {data.map((item, index) => {
                 return (
                   <TouchableOpacity
-                    style={{ width: width / 2.4, height: 25 }}
+                    key={index}
+                    style={{width: width / 2.4, height: 25}}
                     onPress={() => {
                       setIndex(0);
                       let indexColor = 0;
@@ -224,88 +227,6 @@ export default ({
                   </TouchableOpacity>
                 );
               })}
-
-              {/* <ScrollView> */}
-              {/* <VictoryLegend
-              colorScale={data.length > 2 ? color3 : color2}
-              x={60}
-              y={20}
-              itemsPerRow={2}
-              orientation="horizontal"
-              data={data.map(({x, y}) => ({
-                name: `${x} ${y} % `,
-              }))}
-              events={[
-                {
-                  target: 'labels',
-                  eventHandlers: {
-                    onPressIn: () => {
-                      return [
-                        {
-                          target: 'labels',
-                          mutation: props => {
-                            setIndex(0);
-                            let indexColor = 0;
-                            let color5 = color4;
-                            props.data.map((item, index) => {
-                              if (props.text == item.name) {
-                                color5[index] = '#fff';
-                                indexColor = index;
-                              } else {
-                                color5[index] = color3[index];
-                              }
-                            });
-                            setColor4(color5);
-                            setTimeout(() => {
-                              setIndex(1);
-                            }, 200);
-                          },
-                        },
-                      ];
-                    },
-                  },
-                },
-                {
-                  target: 'data',
-                  eventHandlers: {
-                    onPressIn: () => {
-                      return [
-                        {
-                          target: 'labels',
-                          mutation: props => {
-                            setIndex(0);
-                            let indexColor = 0;
-                            let color5 = color4;
-                            props.data.map((item, index) => {
-                              if (props.text == item.name) {
-                                color5[index] = '#fff';
-                                indexColor = index;
-                              } else {
-                                color5[index] = color3[index];
-                              }
-                            });
-                            setColor4(color5);
-                            setTimeout(() => {
-                              setIndex(1);
-                            }, 200);
-                          },
-                        },
-                      ];
-                    },
-                  },
-                },
-              ]}
-              labelComponent={
-                <VictoryLabel
-                  style={{
-                    fontSize: ViewScale(13),
-                    fontFamily: FONT_TYPE.MEDIUM,
-                    fill: COLORS.PRIMARY,
-                  }}
-                />
-              }
-            /> */}
-              {/* </ScrollView> */}
             </View>
           </View>
         )}
@@ -320,7 +241,7 @@ const Label = ({
   valueKey,
   data,
   datum,
-  slice: { startAngle, endAngle },
+  slice: {startAngle, endAngle},
   cx,
   cy,
   index,
@@ -344,7 +265,7 @@ const Label = ({
   fixedTo = function (number, n) {
     var k = Math.pow(10, n);
     return (Math.round(number * k) / k).toFixed(n);
-  }
+  };
 
   return (
     <G>
@@ -412,7 +333,7 @@ const Label = ({
 };
 
 const LabelLine = props => {
-  const { cx, cy, midAngle, middleRadius, radius, data, index } = props;
+  const {cx, cy, midAngle, middleRadius, radius, data, index} = props;
 
   const xStart = cx + getXOffset(middleRadius, midAngle);
   const yStart = cy + getYOffset(middleRadius, midAngle);
