@@ -51,14 +51,16 @@ TextInput.defaultProps = {
 
 const App = () => {
   if (__DEV__) {
-    LogBox.ignoreLogs([  
+    LogBox.ignoreLogs([
       'Setting a timer for a long period of time',
       'Non-serializable values were found in the navigation state',
       'Did not retain recoil value on render',
       'Require cycle: node_modules/victory-core/node_modules/d3-interpolate/src/value.js',
       'Require cycle: node_modules/victory-native/node_modules/victory-axis/node_modules/d3-interpolate/src/value.js',
       'Duplicate atom key',
-      'componentWillMount has been renamed', // มาแก้ทีหลัง
+      'componentWillMount has been renamed',
+      'Warning: Slice: Support for defaultProps will be removed',
+      'Got a component with the name "index"', // มาแก้ทีหลัง
     ]);
 
     DevSettings.addMenuItem('Clear AsyncStorage', () => {

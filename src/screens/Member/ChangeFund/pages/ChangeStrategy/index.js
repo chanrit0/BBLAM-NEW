@@ -71,7 +71,6 @@ export default () => {
     await getChangeFund()
       .then(response => {
         if (response.code == '02') {
-          console.log(response);
           setTiRebalance(response?.transaction);
           setApiData(response);
           setRoutes(

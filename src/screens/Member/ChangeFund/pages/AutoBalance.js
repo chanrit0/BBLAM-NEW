@@ -20,7 +20,7 @@ import { InteractionManager, View } from 'react-native';
 import { AlertFailed, AlertSuccess } from 'components/molecules';
 import ServerErrorPage from 'screens/Global/ServerErrorPage';
 
-export default function index() {
+export default function AutoBalance() {
   const [passwordMatch, setPasswordMatch] = React.useState(false);
   const [isServerError, setIsServerError] = React.useState(false);
 

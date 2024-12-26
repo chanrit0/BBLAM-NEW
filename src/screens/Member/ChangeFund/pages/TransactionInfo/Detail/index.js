@@ -13,7 +13,7 @@ import styles from './Style';
 import {Ionicons, Entypo} from 'components/Icons';
 import {getTransactionDetail} from 'services/api/member';
 
-export default function index({route}) {
+export default function TransactionInfoDetail({route}) {
   const [apiData, setApiData] = React.useState(null);
   const {id} = route.params;
   const [headers, setHeader] = React.useState([]);
